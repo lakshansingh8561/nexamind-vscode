@@ -5,6 +5,7 @@
   "description": "Lumina AI Chat Assistant for VS Code",
   "version": "0.1.0",
   "publisher": "luminaai",
+  "license": "SEE LICENSE IN LICENSE",
   "repository": {
   "type": "git",
   "url": "https://github.com/lakshansingh8561/nexamind-vscode.git"
