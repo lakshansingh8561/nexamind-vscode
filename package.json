@@ -1,0 +1,120 @@
+
+{
+  "name": "nexamind-vscode",
+  "displayName": "Lumina AI",
+  "description": "Lumina AI Chat Assistant for VS Code",
+  "version": "0.1.0",
+  "publisher": "luminaai",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "AI",
+    "Chat",
+    "Programming Languages"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onView:nexamind.chatView"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "nexamind-sidebar",
+          "title": "Lumina",
+          "icon": "resources/nexamind-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "nexamind-sidebar": [
+        {
+          "type": "webview",
+          "id": "nexamind.chatView",
+          "name": "Lumina Chat"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "nexamind.openChat",
+        "title": "Lumina: Open Chat",
+        "category": "Lumina"
+      },
+      {
+        "command": "nexamind.newChat",
+        "title": "Lumina: New Chat",
+        "category": "Lumina",
+        "icon": "$(plus)"
+      },
+      {
+        "command": "nexamind.login",
+        "title": "Lumina: Login",
+        "category": "Lumina"
+      },
+      {
+        "command": "nexamind.logout",
+        "title": "Lumina: Logout",
+        "category": "Lumina"
+      },
+      {
+        "command": "nexamind.setBackendUrl",
+        "title": "Lumina: Set Backend URL",
+        "category": "Lumina"
+      },
+      {
+        "command": "nexamind.analyzeActiveFile",
+        "title": "Lumina: Analyze Active File",
+        "category": "Lumina"
+      },
+      {
+        "command": "nexamind.addFilesToContext",
+        "title": "Lumina: Add Workspace Files to Context",
+        "category": "Lumina"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "nexamind.newChat",
+          "when": "view == nexamind.chatView",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "nexamind.analyzeActiveFile",
+          "group": "Lumina@1"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Lumina",
+      "properties": {
+        "nexamind.backendUrl": {
+          "type": "string",
+          "default": "http://localhost:5000",
+          "description": "Base URL of the Lumina backend API",
+          "scope": "application"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "compile": "tsc -p ./",
+    "watch": "node esbuild.config.mjs --watch",
+    "build": "node esbuild.config.mjs",
+    "typecheck": "tsc --noEmit -p ./",
+    "package": "vsce package --no-dependencies --allow-missing-repository",
+    "test": "node esbuild.config.mjs --test && node --test dist-test/**/*.test.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "@types/vscode": "^1.90.0",
+    "@vscode/vsce": "^3.2.1",
+    "esbuild": "^0.23.0",
+    "typescript": "^5.5.2"
+  }
+}
