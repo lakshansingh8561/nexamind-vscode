@@ -1,7 +1,7 @@
 
 {
   "name": "nexamind-vscode",
-  "displayName": "Lumina AI",
+  "displayName":  "Lumina AI — Code Assistant",
   "description": "Lumina AI Chat Assistant for VS Code",
   "version": "0.1.0",
   "publisher": "luminaai",
